@@ -41,5 +41,22 @@ namespace MvcUsers
                 return db.Users.SingleOrDefault(user => user.Number == number);
             }
         }
+
+        internal static User GetUser(String name, String password)
+        {
+            using (var db = new DatabaseEntities())
+            {
+                var user = db.Users.SingleOrDefault(u => u.Name == name);
+
+                if (user == null) return null;
+                else
+                {
+                    if (user.PasswordHashCode1 == User.GetPasswordHashCode1(password) &&
+                        user.PasswordHashCode2 == User.GetPasswordHashCode2(password)) return user;
+                    else 
+                        return null;
+                }
+            }
+        }
     }
 }

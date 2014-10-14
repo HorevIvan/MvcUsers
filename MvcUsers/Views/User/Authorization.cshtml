@@ -1,0 +1,16 @@
+﻿@model MvcUsers.Models.UserAuthorization
+
+@{
+    ViewBag.Title = "Authorization";
+}
+
+<h2>Authorization</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(model => model.Name)
+    
+    @Html.EditorFor(model => model.Password)
+
+    <input type="submit" value="Авторизация" />
+}

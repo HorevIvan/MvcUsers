@@ -32,5 +32,26 @@ namespace MvcUsers.Controllers
         {
             return View(Repository.GetUser(number));
         }
+
+        [HttpGet]
+        public ActionResult Authorization()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Authorization(UserAuthorization ua)
+        {
+            Session["User"] = Repository.GetUser(ua.Name, ua.Password);
+
+            return RedirectToAction("List");
+        }
+
+        public ActionResult Exit()
+        {
+            Session["User"] = null;
+
+            return RedirectToAction("List");
+        }
     }
 }

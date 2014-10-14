@@ -1,0 +1,12 @@
+﻿@{ Layout = null; }
+<div style="text-align: right;">
+    @if (Session["User"] != null)
+    {
+        @(((MvcUsers.Models.User)Session["User"]).Name) <br />
+        @Html.ActionLink("Выход", "Exit", "User")
+    }
+    else
+    {
+        @Html.ActionLink("Авторизация", "Authorization", "User")
+    }
+</div>
