@@ -16,7 +16,6 @@ namespace MvcUsers.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Registration(UserRegistration ur)
         {
             Repository.CreateUser(ur.Name, ur.Password);
@@ -27,6 +26,11 @@ namespace MvcUsers.Controllers
         public ActionResult List()
         {
             return View(Repository.GetUsers());
+        }
+
+        public ActionResult Info(Int32 number)
+        {
+            return View(Repository.GetUser(number));
         }
     }
 }

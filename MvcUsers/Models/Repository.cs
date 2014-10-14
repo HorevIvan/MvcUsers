@@ -33,5 +33,13 @@ namespace MvcUsers
                 return db.Users.ToList();
             }
         }
+
+        public static User GetUser(Int32 number)
+        {
+            using (var db = new DatabaseEntities())
+            {
+                return db.Users.SingleOrDefault(user => user.Number == number);
+            }
+        }
     }
 }
