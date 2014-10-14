@@ -1,5 +1,18 @@
 ﻿@model IEnumerable<MvcUsers.Models.User>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Список пользователей";
 }
+
+<h2>@ViewBag.Title</h2>
+
+@Html.ActionLink("Добавить пользователя", "Registration")
+
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>
+            @user.Name
+        </li>
+    }
+</ul>

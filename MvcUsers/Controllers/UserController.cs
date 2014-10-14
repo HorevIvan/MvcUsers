@@ -26,7 +26,7 @@ namespace MvcUsers.Controllers
 
         public ActionResult List()
         {
-            return View();
+            return View(Repository.GetUsers());
         }
     }
 }

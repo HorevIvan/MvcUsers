@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MvcUsers.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MvcUsers.Models
+namespace MvcUsers
 {
     public static class Repository
     {
@@ -23,6 +24,14 @@ namespace MvcUsers.Models
             }
 
             return user;
+        }
+
+        public static IEnumerable<User> GetUsers()
+        {
+            using (var db = new DatabaseEntities())
+            {
+                return db.Users.ToList();
+            }
         }
     }
 }
